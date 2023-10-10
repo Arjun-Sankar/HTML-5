@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var menus = ["Home", "About Us", "Contact Us"]
+        function doDisplay(arry) {
+            var listSyntax = "<ul>";
+            for (var i = 0; i < arry.length; i++) {
+                listSyntax += "<li>" + arry[i] + " <button onclick='doEdit(" + i + ")';'>Edit</button> <button onclick='doDelete(" + i + ")'>Delete</button></li>"
+            }
+            listSyntax += "</ul>"
+            document.getElementById("finalList").innerHTML = listSyntax;
+            return;
+        }
+        function arrayEvents(para) {
+            var userElement = document.getElementById("user").value;
+            var obj = document.getElementById("mistake");
+            var isValidElement = !!userElement.match(/^\S/);
+            switch (para) {
+                case 'push':
+                    if (isValidElement) {
+                        menus.push(userElement);
+                    } else {
+                        obj.innerHTML = "Enter Valid Element"
+                        obj.style.color = "red";
+                    }
+                    break;
+                case 'pop':
+                    menus.pop();
+                    obj.innerHTML = "";
+                    break;
+                case 'shift':
+                    menus.shift();
+                    obj.innerHTML = "";
+                    break;
+                case 'unshift':
+                    if (isValidElement) {
+                        menus.unshift(userElement);
+                    } else {
+                        obj.innerHTML = "Enter Valid Element"
+                        obj.style.color = "red";
+                    }
+                    break;
+            }
+            doDisplay(menus);
+
+        }
+        function doSearch(check) {
+            var searcharry = [];
+            for (var i = 0; i < menus.length; i++) {
+                if (menus[i].toLowerCase().includes(check.toLowerCase())) {
+                    var res = searcharry.push(menus[i]);
+                }
+            }
+            doDisplay(searcharry);
+            var obj = document.getElementById("record");
+            if (res == searcharry.length) {
+                obj.innerHTML = "you have " + res + " record"
+                obj.style.color = "green";
+            }else{
+                obj.innerHTML = "You Have No Search Results"
+                obj.style.color = "red";
+            }
+        }
+        var editInd;
+        function doEdit(obj) {
+            editInd = obj;
+            document.getElementById("display").style.display = 'block';
+        }
+        function doUpdate() {
+            doEdit(editInd);
+            var editvalue = document.getElementById("userupdate").value;
+            var isValidElement = !!editvalue.match(/^\S/);
+            if (isValidElement) {
+                menus.splice(editInd, 1, editvalue);
+            } else {
+                document.getElementById("updatemist").innerHTML = "Enter Valid Element"
+                document.getElementById("updatemist").style.color = "red";
+            }
+            doDisplay(menus);
+        }
+        function doDelete(delIndex) {
+            if (confirm("Are you Sure Want To Delete This?")) {
+                menus.splice(menus[delIndex], 1);
+            }
+            doDisplay(menus);
+        }
+    </script>
+</head>
+
+<body onload="doDisplay(menus)">
+    Menu: <input type="text" id="user"> <span id="mistake"></span> <br><br>
+    <button onclick="arrayEvents('push')">Push</button> &nbsp;
+    <button onclick="arrayEvents('pop')">Pop</button> &nbsp;
+    <button onclick="arrayEvents('shift')">Shift</button> &nbsp;
+    <button onclick="arrayEvents('unshift')">Unshift</button> <br><br>
+    Search:<input type="text" onkeyup="doSearch(this.value)"> <br> <br>
+    <span id="record"></span>
+    <span id="finalList"></span>
+    <div id="display" style="display: none;">
+        Menu: <input type="text" id="userupdate"> <span id="updatemist"></span><br><br>
+        <button onclick="doUpdate()">Update</button>
+    </div>
+</body>
+
+</html>

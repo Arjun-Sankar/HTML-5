@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function signOption(useroption) {
+            if (useroption == 'signup') {
+                document.getElementById("reg").style.display = "block";
+                document.getElementById("sign").style.display = "none";
+            }
+            else if(useroption == 'signin'){
+                location.href='register1.html';
+            }
+        }
+        var userDatas = [];
+        function userDetails() {
+            var userName = document.getElementById("uname").value;
+            var userPass = document.getElementById("upass").value;
+            userDatas.push({'uname': userName,'upass': userPass });
+            localStorage.setItem("datas",JSON.stringify(userDatas));  
+        }
+        function logIn(){
+            location.href='register1.html'
+        }
+    </script>
+</head>
+
+<body>
+    <div id="sign" style="display: block;">
+        <h1>Hello There...</h1>
+        <button onclick="signOption(this.id)" id="signup">Sign up</button> <span style="color: chocolate;"> (New
+            user)</span><br><br>
+        <button onclick="signOption(this.id)" id="signin">Sign in</button> <span style="color: chocolate;"> (Already a
+            user)</span>
+    </div>
+    <div id="reg" style="display: none;">
+        Username: <input type="text" id="uname" > <br><br>
+        Password: <input type="password" id="upass"> <br><br>
+        <button onclick="userDetails()">REGISTER</button>
+        <button onclick="logIn()">LOGIN</button>
+    </div>
+
+</body>
+
+</html>

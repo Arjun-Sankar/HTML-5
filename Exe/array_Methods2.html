@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var names = ["Maheswaran", "Ganesh", "Vinothkumar", "Arjun", "Kevinduke"];
+        function usedNames() {
+            document.getElementById("usednames").innerHTML = names;
+            document.getElementById("sortnames").innerHTML = names;
+        }
+        function user(username) {
+            console.log(names);
+            var obj = document.getElementById("result");
+            if (names.indexOf(username) >= 0) {
+                obj.innerHTML = "Name Is Already Taken.";
+                obj.style.color = "red";
+            } else {
+                obj.innerHTML = "Congrats,Name Is Available.";
+                obj.style.color = "green";
+            }
+        }
+        function sortOut(order) {
+            switch (order) {
+                case 'ascend':
+                    document.getElementById("sort").innerHTML = names.sort();
+                    break;
+                case 'descend':
+                    document.getElementById("sort").innerHTML = names.sort().reverse();
+                    break;
+            }
+
+        }
+        function mirrorValue(uservalue) {
+            var obj = uservalue.split("").reverse().join("");
+            document.getElementById("mirror").innerHTML = obj;
+        }
+
+    </script>
+</head>
+
+<body onload="usedNames()">
+    <h1>1.Username Availability</h1>
+    Usednames: <span id="usednames"> </span> <br><br>
+    Name: <input type="text" id="user" onblur="user(this.value)"> <br><br>
+    <span id="result"></span><br>
+
+    <h1>2.Sort Array Values </h1>
+    Usednames: <span id="sortnames"> </span> <br><br>
+    <button onclick="sortOut(this.id)" id="ascend">Ascend</button> &nbsp; <button onclick="sortOut(this.id)"
+        id="descend">Descend</button> <br><br>
+    Result: <span id="sort"></span>
+
+    <h1>3.Mirror The Values</h1>
+    Text: <input type="text" onblur=" mirrorValue(this.value)"> <br><br>
+    Result: <span id="mirror"></span>
+
+</body>
+
+</html>

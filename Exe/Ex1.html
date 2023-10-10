@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXE 1</title>
+    <script>
+        function greetuser() {
+            var Firstname = document.getElementById("fname").value;
+            var Lastname = document.getElementById("lname").value;
+            alert("Hii  " + Firstname + " " + Lastname);
+        }
+
+    </script>
+</head>
+
+<body>
+    First Name: <input type="text" id="fname" required> <br><br>
+    Last Name : <input type="text" id="lname" required> <br><br>
+    <button onclick="greetuser()">Get full name</button>
+</body>
+
+</html>

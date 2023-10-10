@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function movieDetails(mname) {
+            var xhttp = new XMLHttpRequest;
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 1 || xhttp.readyState == 2 || xhttp.readyState == 3) {
+                    document.getElementById("loader").style.display = "block";
+                    document.getElementById("display").style.display = "none";
+                }
+                else if (xhttp.readyState == 4) {
+                    document.getElementById("display").style.display = "block";
+                    document.getElementById("loader").style.display = "none";
+                    console.log(xhttp.responseText);
+                    var plainText = JSON.parse(xhttp.responseText);
+                    document.getElementById("img").src = plainText.Poster;
+                    document.getElementById("movieinfo").innerHTML="";
+                    for (var keys in plainText) {
+                        if (plainText[keys] == plainText.Poster) {
+                            continue;
+                        }
+                        document.getElementById("movieinfo").innerHTML += keys + " : " + plainText[keys] + "<br><br>";
+        
+                    }
+                }
+            }
+            xhttp.open("GET", "http://www.omdbapi.com/?t=" + mname + "&apikey=c429066e");
+            xhttp.send();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Movie Name</h1>
+    <input type="text" id="mname" onblur="movieDetails(this.value)"><br><br>
+    <div id="loader" style="display: none;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif">
+    </div>
+    <div id="display" style="display: none;">
+        <h2>Movie Info</h2>
+        <img src="" id="img">
+        <p id="movieinfo"></p>
+    </div>
+</body>
+
+</html>

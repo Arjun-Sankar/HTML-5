@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function userValidation() {
+            var datas = localStorage.getItem("datas");
+            var parsed = JSON.parse(datas);
+            var userName = document.getElementById("uname").value;
+            var userPass = document.getElementById("upass").value;
+            for (var i = 0; i < parsed.length; i++) {
+                if(parsed[i].uname==userName && parsed[i].upass==userPass){
+                    document.getElementById("display").style.display="none";
+                    document.getElementById("welcome").innerHTML="Hi "+userName+" ,You Are Logged In";
+                    document.getElementById("welcome").style.color="green";
+                    return false;
+                }
+                else{
+                    document.getElementById("welcome").innerHTML="Sorry,We Could Not Find Your Account";
+                    document.getElementById("welcome").style.color="red";
+                }
+            }
+        }
+        function mainMenu(){
+            location.href='register.html';
+        }
+    </script>
+</head>
+
+<body>
+    <span id="welcome"></span><br><br>
+    <div id="display" style="display: block;">
+        Username: <input type="text" id="uname"> <br><br>
+        Password: <input type="password" id="upass"> <br><br>
+        <button onclick="userValidation()">LOGIN</button>&nbsp;
+        <button onclick="mainMenu()">Go To Main Menu</button>
+    </div>
+</body>
+
+</html>

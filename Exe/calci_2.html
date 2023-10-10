@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switchcase</title>
+    <script>
+        function doCalc(ob) {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var result;
+            var obj= document.getElementById("res");
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please Enter Valid The Inputs"
+                obj.style.color='red';
+                
+            }
+            else {
+                switch (ob) {
+                    case 'add':
+                        result = Number(num1) + Number(num2);
+                        obj.style.color='green';   
+                        break;
+                    case 'sub':
+                        result = num1 - num2;
+                        obj.style.color='green'; 
+                        break;
+                    case 'mul':
+                        result = num1 * num2;
+                        obj.style.color='green'; 
+                        break;
+                    case 'div':
+                        result = num1 / num2;
+                        obj.style.color='green'; 
+                        break;
+                    default:
+                        result = "Something Went Wrong..";
+                        obj.style.color='red';
+
+                }
+            }
+            obj.innerHTML = result;
+        }  
+    </script>
+</head>
+
+<body>
+    Number 1: <input type="text" id="num1"><br><br>
+    Number 2: <input type="text" id="num2"> <br><br>
+    <button onclick="doCalc('add')">Add</button>&nbsp;
+    <button onclick="doCalc('sub')">Sub</button>&nbsp;
+    <button onclick="doCalc('mul')">Mul</button>&nbsp;
+    <button onclick="doCalc('div')">Div</button> <br><br>
+    Result: <span id="res"></span>
+</body>
+
+</html>

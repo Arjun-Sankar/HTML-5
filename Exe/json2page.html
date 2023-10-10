@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To My App</title>
+    <script>
+        
+        function delayShow(){
+          var userName= window.localStorage.getItem("uname");
+           document.getElementById("display").innerHTML="Welcome "+userName;
+           document.getElementById("display").style.color="blue"
+        }
+       
+    </script>
+</head>
+
+<body onload="delayShow()">
+    <span id="display"></span>
+</body>
+
+</html>

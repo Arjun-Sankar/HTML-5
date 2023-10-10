@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var names = ["Maheswaran", "Ganesh", "Vinothkumar", "Arjun", "Kevinduke"];
+        var datas = [75, 8, "raja", 52, "ram", "ravi", 3];
+        var words = ["hello", "everyone", "he", "is", "very", "kindness"];
+        var marks = [85, 48, 99, 96, 100, 25];
+        var totalmarks = [45, 66, 23, 94, 50, 78, 15];
+
+        function usedNames() {
+            document.getElementById("usednames").innerHTML = names;
+            document.getElementById("separate").innerHTML = datas;
+            document.getElementById("longarraywords").innerHTML = words;
+            document.getElementById("arraymarks").innerHTML = marks;
+            document.getElementById("totalmarks").innerHTML = totalmarks;
+        }
+        function user(username) {
+            var transNames = []
+            for (var i = 0; i < names.length; i++) {
+                transNames.push(names[i].toLowerCase());
+            }
+            var obj = document.getElementById("result");
+            if (transNames.indexOf(username.toLowerCase()) >= 0) {
+                obj.innerHTML = "Name Is Already Taken.";
+                obj.style.color = "red";
+            } else {
+                obj.innerHTML = "Congrats,Name Is Available.";
+                obj.style.color = "green";
+            }
+        }
+        var num = datas.filter(function (value) {
+            return String(value).match(/^\d+$/);
+        })
+        var str = datas.filter(function (value) {
+            return String(value).match(/^[a-zA-Z\s]+$/);
+        })
+        function separateWays() {
+            document.getElementById("numbers").innerHTML = num;
+            document.getElementById("strings").innerHTML = str;
+        }
+        function getLongestWord() {
+            var a = 0;
+            var longest;
+            for (var i = 0; i < words.length; i++) {
+                if (words[i].length > a) {
+                    a = words[i].length;
+                    longest = words[i]
+                }
+            }
+            document.getElementById("longestword").innerHTML = longest;
+        }
+        function graceMarks() {
+            var grace = document.getElementById("usermarks").value;
+            var  tempMarks=[];
+                for(var i=0;i<marks.length;i++){
+                    tempMarks[i]= marks[i];
+                    if ((marks[i] + Number(grace)) <= 100){
+                    tempMarks[i]= marks[i] + Number(grace)  ; 
+                }}
+                document.getElementById("finalmarks").innerHTML = tempMarks;
+            
+        }
+        function ShowPassedStudents() {
+            var passedStudents = totalmarks.filter(function (value) {
+                return value >= 50;
+            })
+            var students = document.getElementById("students");
+            if (students.checked) {
+                document.getElementById("passedmarks").innerHTML = passedStudents;
+            } else {
+                document.getElementById("passedmarks").innerHTML = ""
+            }
+        }
+    </script>
+</head>
+
+<body onload="usedNames()">
+    <h1>1.Username Availability</h1>
+    Usednames: <span id="usednames"> </span> <br><br>
+    Name: <input type="text" id="user" onblur="user(this.value)"> <br><br>
+    <span id="result"></span><br>
+
+    <h1>2.Separate Numbers And String In Separate Ways</h1>
+    <span id="separate"></span> <br><br>
+    <button onclick="separateWays()">Separate</button><br><br>
+    Numbers: <span id="numbers"></span><br>
+    String: <span id="strings"></span>
+
+    <h1>3.Find Longest Word From Array</h1>
+    <span id="longarraywords"></span> <br><br>
+    <button onclick="getLongestWord()">GET</button> <br><br>
+    Result: <span id="longestword"></span>
+
+    <h1>4.Add Grace Marks</h1>
+    <span id="arraymarks"></span> <br><br>
+    Grace Marks: <input type="text" id="usermarks"> <br><br>
+    <button onclick="graceMarks()">Update</button> <br><br>
+    Result: <span id="finalmarks"></span>
+
+    <h1>5.Filtered Only Passed Marks</h1>
+    <span id="totalmarks"></span> <br><br>
+    Show Filter Marks: <input type="checkbox" name="students" id="students" onclick="ShowPassedStudents()"><br><br>
+    Result:<span id="passedmarks"></span>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script>
+        function acceptVowels(event) {
+            var res=event.key;
+            var isValidChar = !!res.match(/^([aeiouAEIOU]+)$/);
+            if (isValidChar) {
+                return true;
+            } else {
+                return false;   
+            }
+        }
+        function selectCountry() {
+            var obj=document.getElementById("result");
+            obj.innerHTML=document.getElementById("country").value;
+            obj.style.color="orange"
+        }
+    </script>
+</head>
+
+<body>
+    <h1>1.Allow Vowels Only: </h1>
+    <input type="text" id="vowels" onkeypress="return acceptVowels(event)">
+
+    <form action="">
+        <h1>2.Select Your Country:</h1>
+        <select name="country" id="country" onclick="selectCountry()">
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Japan">Japan</option>
+            <option value="China">China</option>
+        </select>
+        <p id="usercountry">You Have Selected: <span id="result"></span></p>
+    </form>
+</body>
+
+</html>

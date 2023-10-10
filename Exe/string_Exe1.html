@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Inbuilt Methods</title>
+    <script>
+        var usednames = "mahes, kevin, ganesh, arjun, arun";
+        function loadNames() {
+            document.getElementById("name").innerHTML = usednames;
+        }
+        function checkNames() {
+            var user = document.getElementById("user").value;
+            var obj = document.getElementById("colour")
+            var res = usednames.includes(user);
+            if (res) {
+                var result = "The Name Is Already Taken...";
+                obj.style.color = "red";
+                document.getElementById("user").value = "";
+            } else {
+                var result = "Congratulation";
+                obj.style.color = 'green';
+            }
+            obj.innerHTML = result;
+        }
+    </script>
+</head>
+
+<body onload="loadNames()">
+    <h1>Username Check Availability</h1>
+    <div id="name"></div> <br><br>
+    Username: <input type="text" id="user" onblur="checkNames()"> <br><br>
+    <span id="colour"></span>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show & Hide</title>
+    <script>
+        function userForm(user) {
+            var maleUser = document.getElementById("maleform");
+            var femaleUser = document.getElementById("femaleform");
+            if (user == 'male') {
+                maleUser.style.display = 'block';
+                femaleUser.style.display = 'none';
+            } else if (user == 'female') {
+                femaleUser.style.display = 'block';
+                maleUser.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action=""  autocomplete="off">
+        <h1>Form Application</h1>
+        Name: <input type="text" id="name" name="name"> <br><br>
+        Place: <input type="text" id="place" name="name"> <br><br>
+        Gender: <input type="radio" id="male" name="gender" value="male" onclick="userForm('male')"> Male &nbsp;
+        <input type="radio" id="female" name="gender" value="female" onclick="userForm('female')">Female <br><br>
+        <div id="maleform" style="display:none;">
+            Moblie Number: <input type="number" id="number" name="number"><br><br>
+            Email id: <input type="email" id="email" name="email"> <br><br>
+        </div>
+        <div id="femaleform" style="display:none;">
+            Location: <input type="text" id="location" name="location"> <br><br>
+            Pin Code: <input type="text" id="pin" name="pin"><br><br>
+        </div>
+        <button type="submit"> Submit </button>
+    </form>
+</body>
+
+</html>

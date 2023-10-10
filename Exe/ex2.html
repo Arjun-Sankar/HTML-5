@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXE 2</title>
+    <script>
+        function userName() {
+            var name = document.getElementById("name").value;
+            // var regex= new RegExp(/^[a-zA-Z\-]+$/);
+            var isValidName = !!name.match(/^[a-zA-Z\-]+$/);
+            if (isValidName) {
+                alert("valid");
+            } else {
+                alert("invalid");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    Username: <input type="text" id="name" onblur="userName()"><br><br>
+    <span id="res"></span> <br><br>
+
+</body>
+
+</html>

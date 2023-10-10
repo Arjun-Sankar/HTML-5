@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+</head>
+
+<body>
+    <h1>Get & Verify OTP</h1>
+    <button onclick="getOtp()">Get OTP</button><br><br>
+    <span id="get"></span> <br><br>
+
+    Enter OTP: <input type="text" id="userotp"> <br><br>
+    <button onclick="doValidate()">Validate</button><br><br>
+    <span id="set"></span>
+    <script>
+        var randotp, userotp;
+        function getOtp() {
+            randotp = Math.round(Math.random() * 1000000);
+            document.getElementById("get").innerHTML = randotp;
+            return randotp;
+        }
+        function doValidate() {
+            userotp = document.getElementById("userotp").value;
+            var obj = document.getElementById("set");
+            if (userotp == randotp) {
+                var isValidNum = !!userotp.match(/^[0-9]{6}$/);
+                if (isValidNum) {
+                    var result = "Verified";
+                    obj.style.color = "green";
+                } else {
+                    var result = "Please Enter 6 Digits";
+                    obj.style.color = "red";
+                }
+            } else {
+                var result = "Not Verified";
+                obj.style.color = "red"
+            }
+            obj.innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>

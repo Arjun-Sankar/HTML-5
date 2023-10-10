@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Inbuilt Methods 2</title>
+    <script>
+        var usednames = "kevin,Arun,Arjun,mahes,ganesh";
+        function checkNames() {
+            var res = document.getElementById("name").value.trim();
+            var regex = new RegExp(res, 'ig');
+            var obj = document.getElementById("res");
+
+            if (usednames.search(regex) >= 0) {
+                var result = "Name Already Taken";
+                document.getElementById("name").value = "";
+                obj.style.color = "red";
+            } else {
+                var result = "Congrats";
+                obj.style.color = "green";
+            }
+
+            obj.innerHTML = result;
+
+        }
+        var senten = "There was a little boy who loved to come and play around the tree every day."
+        function loadPage() {
+            document.getElementById("senten").innerHTML = senten;
+            document.getElementById("show").innerHTML = usednames;
+        }
+        function replaceStr() {
+
+            var str1 = document.getElementById("find").value.trim();
+            var regex = new RegExp(str1, 'ig');
+            var str2 = document.getElementById("replace").value.trim();
+            var result = senten.replace(regex, str2);
+            document.getElementById("rep").innerHTML = result;
+
+        }
+
+    </script>
+</head>
+
+<body onload="loadPage()">
+    <h1>Username Check Availability</h1>
+    <p id="show"></p>
+    Username: <input id="name" type="text" onblur="checkNames()"> <br><br>
+    <span id="res"></span>
+
+    <h1>Replace The String</h1>
+    <p id="senten"></p>
+    Find: <input type="text" id="find"> <br><br>
+    Replace: <input type="text" id="replace"> <br><br>
+    <button onclick="replaceStr()">UPDATE</button><br><br>
+    <span id="rep"></span>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Inbuilt Methods 3</title>
+    <script>
+        function userName() {
+            var name = document.getElementById("name").value;
+            var isValidName = !!name.match(/^[a-zA-Z\-]+$/);
+            var obj = document.getElementById("res");
+            if (isValidName) {
+                var result = "Valid Name";
+                obj.style.color = "green";
+            } else {
+                var result = "Invalid Name";
+                document.getElementById("name").value = "";
+                obj.style.color = "red";
+
+            }
+
+            obj.innerHTML = result;
+        }
+        // MAil...........................................................
+        function userMail() {
+            var mail = document.getElementById("mail").value;
+            var isValidMail = !!mail.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+            var obj = document.getElementById("res1");
+            if (isValidMail) {
+                var result = "Valid Email";
+                obj.style.color = "green";
+            } else {
+                var result = "Invalid Email";
+                document.getElementById("mail").value = "";
+                obj.style.color = "red";
+            }
+
+            obj.innerHTML = result;
+        }
+        //Number...............................................................
+        function userNum() {
+            var num = document.getElementById("num").value;
+            var isValidNum = !!num.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+            var obj = document.getElementById("res2");
+            if (isValidNum) {
+                var result = "Valid Number";
+                obj.style.color = "green";
+            } else {
+                var result = "Invalid Number";
+                document.getElementById("num").value = "";
+                obj.style.color = "red";
+            }
+
+            obj.innerHTML = result;
+        }
+        function userUrl() {
+            var url = document.getElementById("url").value;
+            var regex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+            var isValidUrl = !!url.match(regex);
+            var obj = document.getElementById("res3");
+            if (isValidUrl) {
+                var result = "Valid URL";
+                obj.style.color = "green";
+            } else {
+                var result = "Invalid URL";
+                document.getElementById("url").value = "";
+                obj.style.color = "red";
+            }
+
+            obj.innerHTML = result;
+        }
+        function offerCode() {
+            var code = document.getElementById("code").value;
+            var result = code.toUpperCase();
+            //alert(result);
+            document.getElementById("code").value = result.trim();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>1.Form Validation</h1>
+    Name: <input type="text" placeholder="Name" id="name" onblur="userName()" autocomplete="off"> <br>
+    <span id="res"></span><br><br>
+    Email: <input type="text" placeholder="abc@gmail.com" id="mail" onblur="userMail()"> <br>
+    <span id="res1"></span><br><br>
+    Numbers: <input type="text" placeholder="Contact" id="num" onblur="userNum()"> <br>
+    <span id="res2"></span> <br><br>
+    URL: <input type="text" id="url" onblur="userUrl()" placeholder="URL"> <br>
+    <span id="res3"></span><br><br>
+
+
+    <h1>2.Enter Offer Code</h1>
+    Code: <input type="text" id="code" onblur="offerCode()" placeholder="Enter Code"> <br><br>
+</body>
+
+</html>

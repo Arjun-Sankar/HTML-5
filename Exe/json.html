@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var data = [{ "username": "arjun", "password": "arjun@1" }, { "username": "mahes", "password": "mahes@1" }, { "username": "kevin", "password": "kevin@1" }];
+        function onLoadPage() {
+            document.getElementById("display").innerHTML = JSON.stringify(data);
+        }
+        function registerValidOnly() {
+            var uName = document.getElementById("uname").value;
+            var uPass = document.getElementById("upass").value;
+            for (i = 0; i < data.length; i++) {
+                if (data[i].username == uName && data[i].password == uPass) {
+                    window.localStorage.setItem("uname",data[i].username)
+                    window.location.href = "json2page.html";
+                    return false;
+                }
+                else {
+                    document.getElementById("result").innerHTML = "Invalid Username Or Password";
+                    document.getElementById("result").style.color = "red";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="onLoadPage()">
+    <span id="display"></span><br><br>
+    <span id="result"></span><br><br>
+    Username: <input type="text" id="uname"><br><br>
+    Password: <input type="text" id="upass"><br><br>
+    <button onclick="registerValidOnly()">REGISTER</button>
+</body>
+
+</html>

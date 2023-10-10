@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To My App</title>
+    <script>
+        var name = document.title;
+        var i = 0;
+        var nameArr = name.split("");
+        function delayShow(){
+            if (i < nameArr.length) {
+                document.getElementById("display").innerHTML += nameArr[i];
+                i++;
+            }
+            else if (i >= nameArr.length) {
+                clearInterval(si);
+            }
+        }
+        var si = setInterval(delayShow, 1000)
+    </script>
+</head>
+
+<body>
+    <span id="display"></span>
+</body>
+
+</html>

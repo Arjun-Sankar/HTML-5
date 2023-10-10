@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script>
+        function showImage(img) {
+            var result = document.getElementById("image");
+            switch (img) {
+                case 'italy':
+                    result.innerHTML = document.getElementById("italyplace").outerHTML;
+                    break;
+                case 'newz':
+                    result.innerHTML = document.getElementById("newzplace").outerHTML;
+                    break;
+                case 'hawaii':
+                    result.innerHTML = document.getElementById("hawaiiplace").outerHTML;
+                    break;
+                case 'england':
+                    result.innerHTML = document.getElementById("englandplace").outerHTML;
+                    break;
+                case 'newyork':
+                    result.innerHTML = document.getElementById("newyorkplace").outerHTML;
+                    break;
+            }
+
+        }
+        function leaveImage() {
+            document.getElementById("image").innerHTML = "";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Top Tourist Places</h1> <br><br>
+
+    <img src="https://static.javatpoint.com/top10-technologies/images/top-10-tourist-places-in-world3.png"
+        id="italyplace" onmouseover="showImage('italy')" onmouseleave="leaveImage()" width="250" height="250"
+        title="Italy"> &nbsp;
+    <img src="https://static.javatpoint.com/top10-technologies/images/top-10-tourist-places-in-world4.png"
+        id="newzplace" onmouseover="showImage('newz')" onmouseleave="leaveImage()" width="250" height="250"
+        title="New Zealand"> &nbsp;
+    <img src="https://static.javatpoint.com/top10-technologies/images/top-10-tourist-places-in-world5.png"
+        id="hawaiiplace" onmouseover="showImage('hawaii')" onmouseleave="leaveImage()" width="250" height="250"
+        title="Hawaii"> &nbsp;
+    <img src="https://static.javatpoint.com/top10-technologies/images/top-10-tourist-places-in-world7.png"
+        id="englandplace" onmouseover="showImage('england')" onmouseleave="leaveImage()" width="250" height="250"
+        title="England"> &nbsp;
+    <img src="https://static.javatpoint.com/top10-technologies/images/top-10-tourist-places-in-world8.png"
+        id="newyorkplace" onmouseover="showImage('newyork')" onmouseleave="leaveImage()" width="250" height="250"
+        title="New York"> <br><br>
+    <div id="image"> </div>
+</body>
+
+</html>

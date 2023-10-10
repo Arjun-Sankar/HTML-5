@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //AS.1
+        var name = "java is strongly typed language";
+        if (name.startsWith("java")) {
+            console.log("yes,Starts with java")
+        }
+        if (name.startsWith("is")) {
+            console.log("NO,Not Startwith Is")
+        }
+        //AS.4
+        var name1 = ("Python")
+        var check = name1.slice(1, 4);
+        var check2 = name1.slice(0)
+        if (name1.includes(check)) {
+            console.log("Starts with Y");
+        }
+        if (name1.includes(check2)) {
+            console.log("Not Starts with Y");
+        }
+        //AS.7(Not Working)
+        var vowelsName = ["python", "w3resource.com"]
+        var vowelscheck;
+        vowelsName.filter(function (value, ind) {
+            return vowelscheck = value.match(/^[aeiou]$/i)
+        })
+        console.log(vowelscheck);
+        //AS.11
+        var alphaorder = ["exercise"]
+        var alphacheck = alphaorder[0].split("").sort().join("")
+        console.log(alphacheck)
+        //AS.15
+        var student = { name: "davis rayy", class: "VI", rollno: 12 }
+        console.log(Object.keys(student).length);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
